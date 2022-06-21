@@ -8,24 +8,27 @@ RSpec.describe Note, type: :model do
     puts "This note's user is #{note.user.inspect}"
   end
   before do
-    @user = User.create(
-        first_name: "khin",
-        last_name: "cho oo",
-        email: "khinchooo@gmail.com",
-        password: "khin1234"
-      )
-      @project = @user.projects.create(
-        name: "Test Project"
-      )
+    # @user = User.create(
+    #     first_name: "khin",
+    #     last_name: "cho oo",
+    #     email: "khinchooo@gmail.com",
+    #     password: "khin1234"
+    #   )
+    #   @project = @user.projects.create(
+    #     name: "Test Project"
+    #   )
+    @user = FactoryBot.create(:user)
+    @project = FactoryBot.create(:project, name: "Test Project", owner: @user)
   end
 
   describe "is valid or invalid" do
     it "is valid with a user, project, message" do
-      note = Note.new(
-        message: "Test Message",
-        user: @user,
-        project: @project
-      )
+      # note = Note.new(
+      #   message: "Test Message",
+      #   user: @user,
+      #   project: @project
+      # )
+      note = FactoryBot.create(:note)
       expect(note).to be_valid
     end
 
