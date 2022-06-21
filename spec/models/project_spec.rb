@@ -46,6 +46,11 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  it "can have many notes" do
+    project = FactoryBot.create(:project, :with_notes)
+    expect(project.notes.length).to eq 5
+  end
+
   # ユーザー単位では重複したプロジェクト名を許可しないこと
   it "does not allow duplicate project names per user" do
     @user.projects.create(
