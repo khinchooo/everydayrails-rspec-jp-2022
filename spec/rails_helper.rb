@@ -64,4 +64,7 @@ RSpec.configure do |config|
 
   # コントローラスベックでDeviseのテストヘルパーを使用する
   config.include Devise::Test::ControllerHelpers, type: :controller
+
+  # Deviseのへルパンメソッドをリクエストスペックで使用する
+  config.include RequestSpecHelper, type: :request
 end
